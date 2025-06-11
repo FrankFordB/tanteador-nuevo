@@ -1,4 +1,7 @@
 
+
+// PARA QUE 1 Y 2 ESCRIBAN EN TEXTAREA ETC
+
 // Este script escucha las teclas 'a' y 'z' para incrementar y decrementar un contador
 let counter = 0;
 let counterVisita = 0;
@@ -207,30 +210,62 @@ let sancionesVisitante = [];
 let sancionTimers = [];
 let tiempoJuegoActivo = false;
 
-// Mostrar modal al presionar 1 o 2
+
+
 document.addEventListener('keydown', function(event) {
-    if (!document.activeElement.isContentEditable && !modalAbierto) {
+    const active = document.activeElement;
+    const isInput = (
+        active.tagName === 'INPUT' ||
+        active.tagName === 'TEXTAREA' ||
+        active.isContentEditable
+    );
+    if (!isInput && !modalAbierto) {
         if (event.key === '1') {
             if (sancionesLocal.length < 4) {
+                modalAbierto = true;
                 sancionContext = 'local';
                 document.getElementById('numero_sancion_input').value = '';
-                new bootstrap.Modal(document.getElementById('modal_sancion')).show();
-                pararCronometroReal()
-                pausarSanciones()
+                const modal = new bootstrap.Modal(document.getElementById('modal_sancion'));
+                modal.show();
+                setTimeout(() => {
+                    document.getElementById('numero_sancion_input').focus();
+                }, 200);
+                pararCronometroReal();
+                pausarSanciones();
+                document.getElementById('modal_sancion').addEventListener('hidden.bs.modal', function handler() {
+                    modalAbierto = false;
+                    this.removeEventListener('hidden.bs.modal', handler);
+                });
             }
         }
         if (event.key === '2') {
             if (sancionesVisitante.length < 4) {
+                modalAbierto = true;
                 sancionContext = 'visitante';
                 document.getElementById('numero_sancion_input').value = '';
-                new bootstrap.Modal(document.getElementById('modal_sancion')).show();
-                pararCronometroReal()
-                pausarSanciones()
+                const modal = new bootstrap.Modal(document.getElementById('modal_sancion'));
+                modal.show();
+                setTimeout(() => {
+                    document.getElementById('numero_sancion_input').focus();
+                }, 200);
+                pararCronometroReal();
+                pausarSanciones();
+                document.getElementById('modal_sancion').addEventListener('hidden.bs.modal', function handler() {
+                    modalAbierto = false;
+                    this.removeEventListener('hidden.bs.modal', handler);
+                });
             }
         }
     }
 });
 
+// Aceptar con Enter en el input del modal
+document.getElementById('numero_sancion_input').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        document.getElementById('confirmar_sancion_btn').click();
+    }
+});
 // Confirmar sanción
 document.getElementById('confirmar_sancion_btn').addEventListener('click', function() {
     const numero = document.getElementById('numero_sancion_input').value;
@@ -250,7 +285,9 @@ document.getElementById('confirmar_sancion_btn').addEventListener('click', funct
         contenedor = document.getElementById('sanciones-visitante');
         lista = sancionesVisitante;
     }
+
     // Crear box visual
+
     const box = document.createElement('div');
     box.className = 'sancion-box';
     box.innerHTML = `<div class="sancion-numero">${numero}</div>
@@ -259,6 +296,17 @@ document.getElementById('confirmar_sancion_btn').addEventListener('click', funct
     sancion.elemento = box;
     lista.push(sancion);
 
+
+// Permitir borrar la sanción con click derecho en cualquier momento
+box.addEventListener('contextmenu', function(e) {
+    e.preventDefault(); // Evita el menú contextual por defecto
+    box.remove();
+    // Elimina del array
+    const idx = lista.indexOf(sancion);
+    if (idx !== -1) lista.splice(idx, 1);
+    // Detiene el timer de la sanción
+    clearInterval(interval);
+});
     // Timer
     const crono = box.querySelector('.sancion-crono');
     let interval = setInterval(() => {
@@ -269,7 +317,7 @@ document.getElementById('confirmar_sancion_btn').addEventListener('click', funct
             crono.textContent = `${min.toString().padStart(2, '0')}:${seg.toString().padStart(2, '0')}`;
             if (sancion.tiempo === 0) {
                 clearInterval(interval);
-                crono.textContent = "INGRESA";
+                crono.textContent = "Ingresa";
                 box.style.backgroundColor = "green";
                 sancion.finalizada = true;
             }
@@ -333,6 +381,3 @@ function reanudarSanciones() {
         if (s.tiempo > 0) s.activo = true;
     });
 }
-
-// Modifica tu función de cronómetro principal para actualizar tiempoJuegoActivo
-
