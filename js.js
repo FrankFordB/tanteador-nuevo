@@ -1,7 +1,10 @@
 
 
 // PARA QUE 1 Y 2 ESCRIBAN EN TEXTAREA ETC
-
+window.addEventListener('DOMContentLoaded', function() {
+    const modal = new bootstrap.Modal(document.getElementById('modal_bienvenida'));
+    modal.show();
+});
 // Este script escucha las teclas 'a' y 'z' para incrementar y decrementar un contador
 let counter = 0;
 let counterVisita = 0;
@@ -351,7 +354,7 @@ function reanudarSanciones() {
 document.addEventListener('keydown', function(event) {
     if (event.code === 'Space' && !document.activeElement.isContentEditable) {
         if (cronometroActivo) {
-            pausarCronometro();
+            pararCronometroReal(); // <--- Cambia esto
             pausarSanciones();
         } else {
             // Reanuda el cronómetro principal y las sanciones

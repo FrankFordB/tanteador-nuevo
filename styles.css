@@ -61,9 +61,7 @@ input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-input[type=number] {
-    -moz-appearance: textfield; /* Firefox */
-}
+
 .div2 {
     display: flex;
     width: 100%;
@@ -133,14 +131,7 @@ input[type=number] {
     align-content: center;
     justify-content: center;
 }
-.tiempo {
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    width: 100%;
-    border: 2px solid white;
-    
-}
+
 .periodo{
     display: flex;
     
@@ -168,10 +159,7 @@ input[type=number] {
 }
 .goles_periodo {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    align-self: center;
-    align-content: center;
+    
     
     font-family: ds-digital, sans-serif;
     font-size: 8em;
@@ -180,13 +168,16 @@ input[type=number] {
 }
 .tiempo{
     display: flex;
+    
+    border: 2px solid white;
     align-items: center;
     justify-content: center;
     font-family: ds-digital, sans-serif;
     font-size: 5em;
-    width: 4em;
+    width: 8em;
     height: 2em;
 }
+
 .tiempo_fuente {
     font-family: ds-digital, sans-serif;
     font-size: 1.6em;
@@ -223,7 +214,7 @@ input[type=number] {
     margin: 10px 0;
 }
 .sancion-box {
-    background: #ff0000;
+    background: #020b5ac9;
     margin-left: 20px;
     margin-bottom: 10px;
     border-radius: 8px;
@@ -253,28 +244,77 @@ input[type=number] {
 }
 
 @media (max-width: 1100px), (max-height: 600px) {
-   .div1 {
-    border-top: 3px solid white;
-    border-left: 3px solid white;
-    border-right: 3px solid white;
-    display: flex;
-    width: 100%;
-    height: 17em;
-    justify-content: space-around;
+    body {
+        font-size: 0.95em;
+    }
+    .logo-equipo {
+        width: 150px;
+        height: 150px;
+        object-fit: cover; /* rellena el espacio y recorta si es necesario */
+    border-radius: 0;  /* opcional: cuadrado, o pon 50% para círculo */
+    background: #222;
+    }
+    .goles {
+        font-size: 10em;
+    }
+    .periodo_letras{
+        margin-bottom: 0px;
+        
+    }
+    .goles_periodo {
+        display:flex ;
+        align-items: center;
+        align-self: center;
+        align-content: center;
+        font-size: 8em;
+    }
+    .equipos_fuente1 {
+        font-size: 2.5em;
+        text-transform: uppercase;
+        width: 100%;
+        font-weight: bold;
+        height: 3em;
+        margin-top: 2%;
+    }
+    .div1{
+        height: 18em;
+    }
+    .div2{
+        height: 10em;
+    }
+    .div3{
+        height: 8em;
+        margin-bottom: 2px;
+        border-top: 3px solid  white;
+        border-bottom: 3px solid white;
+    }
+    .sanciones-row,
+    .sanciones-row2 {
+        width: 100%;
+        font-size: 0.9em;
+        margin-left: 0;
+    }
+    .sancion-box {
+        width: 7em;
+        font-weight: bold;
+        font-size: 1em;
+        margin-left: 5px;
+        padding: 4px;
+    }
     
-}
- .div2 {
-    display: flex;
-    width: 100%;
-    height: 10em;
-    justify-content: space-around;
-    border-left: 3px solid white;
-    border-right: 3px solid white;
-    border-bottom: 3px solid white;
-}
-.titulo_h1 {
+    #modal_sancion  {
+        min-height: 100vh;
+        align-items: flex-end;
+    }
     
-    font-size: 1.8em;
-    margin-bottom: 1em;
-}  /* Agrega más reglas según lo que necesites ajustar */
+    .tiempo {
+        font-size: 4.7em;
+        width: 100%;
+        height: 1.5em;
+    }
+    .tiempo_de_juego{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
 }

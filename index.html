@@ -16,6 +16,36 @@
 </head>
 
 <body>
+    <!-- Modal de mensaje importante -->
+    <div class="modal fade" id="modal_bienvenida" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background: #222; color: white;">
+                <div class="modal-header" style="justify-content: center;">
+                    <h4 class="modal-title">⚠️¡Mensaje Importante! !Leé Me!⚠️</h4>
+                </div>
+                <div class="modal-body">
+                    <p style="font-family: sans-serif; font-size: 19px;">
+                        Ya actualice y arregle el error de la barra,
+                        ahora se puede poner los dos minutos, con el 1
+                        para el local y con el 2 a la visita.
+                        cuando presiona el 1 (fuerte porque anda mal)
+                        se para solo el tiempo, colocan el numero,
+                        aceptar y recién ahi apretan la barra space
+                        para largar el juego. una vez que finaliza el tiempo se pone verde y se puede borrar con el
+                        click izq, y si te equivocaste en poner una sanción con el click derecho sobre el error la saca.
+                        Si queres ver de nuevo
+                        este mensaje, recarga la pagina Crack.
+                        ES MUY FÁCIL!!! un abrazo, me avisan cualquier cosa. Franco 👮🏻🤾‍♀️ Saludos a la Gambito de Dama.
+
+                    </p>
+                </div>
+                <div class="modal-footer" style="justify-content: center;">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="master" id="master">
         <div class="modal" style="margin-top: 15%;" id="modal_tiempo_reset" tabindex="-1">
             <div class="modal-dialog">
@@ -23,7 +53,7 @@
                     <div class="modal-header" style="justify-content: center;">
                         <h4 class="modal-title">Atención</h4>
                     </div>
-                    <div  class="modal-body">
+                    <div class="modal-body">
                         <p>Este botón reinicia solamente el cronómetros. ¿Desea reiniciar?</p>
                     </div>
                     <div class="modal-footer">
@@ -35,14 +65,15 @@
                 </div>
             </div>
         </div>
-<!-- MODAL RESETEO TOTAL -->
- <div class="modal" style="margin-top: 15%;font-family: Arial, Helvetica, sans-serif;" id="modal_tiempo_total_reset" tabindex="-1">
+        <!-- MODAL RESETEO TOTAL -->
+        <div class="modal" style="margin-top: 15%;font-family: Arial, Helvetica, sans-serif;"
+            id="modal_tiempo_total_reset" tabindex="-1">
             <div class="modal-dialog">
                 <div style="width: 90%" class="modal-content">
                     <div class="modal-header" style="justify-content: center;">
                         <h4 class="modal-title">Atención</h4>
                     </div>
-                    <div  class="modal-body">
+                    <div class="modal-body">
                         <p>Este botón reinicia todo el tablero. ¿Desea reiniciar?</p>
                     </div>
                     <div class="modal-footer">
@@ -57,9 +88,7 @@
 
 
         <!-- //////////////////////////////////////////////////// -->
-        <div>
-            <h1 class="titulo_h1" style="margin-top: 5%;">   <br></h1>
-        </div>
+
         <div class="div1">
             <div class="equipos">
                 <img id="logo-local" class="logo-equipo" src="" alt="Logo Local" />
@@ -86,38 +115,40 @@
                 <p id="goles_local">0</p>
             </div>
             <div class="modal" tabindex="-1" id="modal_sancion">
-  <div class="modal-dialog">
-    <div class="modal-content" style="background: #222;display: flex; align-self: flex-end; align-content: end; color: white;">
-            <div class="modal-body">
-        <label for="numero_sancion_input">Número de jugador sancionado:</label>
-        <input type="number" id="numero_sancion_input" min="0" max="99" class="form-control" style="width: 100px;">
-      </div>
-      <div class="modal-footer">
-        <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" id="confirmar_sancion_btn">Confirmar</button>
-      </div>
-    </div>
-  </div>
-</div>
-            
+                <div class="modal-dialog">
+                    <div class="modal-content"
+                        style="background: #222;display: flex; align-self: flex-end; align-content: end; color: white;">
+                        <div class="modal-body">
+                            <label for="numero_sancion_input">Número de jugador sancionado:</label>
+                            <input type="number" id="numero_sancion_input" min="0" max="99" class="form-control"
+                                style="width: 100px;">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary" id="confirmar_sancion_btn">Confirmar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div>
 
-                <div class="goles_periodo" id="periodo" style="margin-bottom: 23%;">1
+                <div class="goles_periodo" id="periodo">1
 
                 </div>
             </div>
             <div class="goles">
                 <p id="goles_visita">0</p>
-                
+
             </div>
 
         </div>
         <div class="div3">
             <div class="sanciones-row" id="sanciones-local"></div>
             <div class="sanciones-row2" id="sanciones-visitante"></div>
-            
-                
-            </div>
+
+
+        </div>
         <a style=" color: white; font-family: Arial, Helvetica, sans-serif;font-size: 1.6em;"
             href="https://ar.linkedin.com/in/franco-burgoa-4a338514b" target="_blank">Desarrollado por Franco Burgoa</a>
     </div>
@@ -128,7 +159,7 @@
 
             <p> SELECCIONE EL LOGO DEL EQUIPO 1</p>
             <input type="file" id="input-logo-local" accept="image/*" style="display:block; margin: 0 auto 10px auto;">
-            <p> SELECCIONE EL LOGO DEL EQUIPO 1</p>
+            <p> SELECCIONE EL LOGO DEL EQUIPO 2</p>
             <input type="file" id="input-logo-visitante" accept="image/*"
                 style="display:block; margin: 0 auto 10px auto;">
             <button id="fullscreen-btn">Pantalla Completa</button>
