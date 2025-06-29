@@ -96,7 +96,13 @@ document.getElementById('minutos_entretiempo').addEventListener('input', functio
 });
 
 document.addEventListener('keydown', function(event) {
-    if (event.key === '0' && !document.activeElement.isContentEditable && !modalAbierto) {
+    // Solo ejecuta la función especial si NO estás en un input, textarea o contenteditable
+    const isInput = (
+        event.target.tagName === 'INPUT' ||
+        event.target.tagName === 'TEXTAREA' ||
+        event.target.isContentEditable
+    );
+    if (event.key === '0' && !isInput && !modalAbierto) {
         abrirModalUnico('modal_saltar_segundo');
         modalAbierto = true;
         document.getElementById('modal_saltar_segundo').addEventListener('hidden.bs.modal', function handler() {
@@ -104,7 +110,8 @@ document.addEventListener('keydown', function(event) {
             this.removeEventListener('hidden.bs.modal', handler);
         });
     }
-});document.getElementById('confirmar_saltar_segundo').onclick = function () {
+});
+    document.getElementById('confirmar_saltar_segundo').onclick = function () {
     enEntretiempo = false;
     periodoActual = 2;
     segundosRestantes = minutosPeriodo * 60;
