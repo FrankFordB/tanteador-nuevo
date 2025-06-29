@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script src="js.js" defer></script>
 
 
@@ -35,7 +38,8 @@
                         click izq, y si te equivocaste en poner una sanción con el click derecho sobre el error la saca.
                         Si queres ver de nuevo
                         este mensaje, recarga la pagina Crack.
-                        ES MUY FÁCIL!!! un abrazo, me avisan cualquier cosa. Franco 👮🏻🤾‍♀️ Saludos a la Gambito de Dama.
+                        ES MUY FÁCIL!!! un abrazo, me avisan cualquier cosa. Franco 👮🏻🤾‍♀️ Saludos a la Gambito de
+                        Dama.
 
                     </p>
                 </div>
@@ -45,6 +49,26 @@
             </div>
         </div>
     </div>
+    <!-- MODAL PREGUNTA ENTRETIEMPO -->
+    <div class="modal fade" id="modal_fin_anticipado" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background: #222; color: white;">
+                <div class="modal-header" style="justify-content: center;">
+                    <h4 class="modal-title">¿Finalizar periodo?</h4>
+                </div>
+                <div class="modal-body">
+                    <p>¿Seguro que desea finalizar el periodo antes de tiempo y pasar al entretiempo o segundo periodo?
+                    </p>
+                </div>
+                <div class="modal-footer" style="justify-content: center;">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="confirmar_fin_anticipado">Sí, finalizar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMIENZO DEL TABLERO -->
 
     <div class="master" id="master">
         <div class="modal" style="margin-top: 15%;" id="modal_tiempo_reset" tabindex="-1">
@@ -65,9 +89,61 @@
                 </div>
             </div>
         </div>
+        <!-- Modal de Ayuda -->
+<div class="modal fade" id="modal_ayuda" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" style="background: #222; color: #fff;">
+      <div class="modal-header" style="border-bottom: none;">
+        <h3 class="modal-title w-100 text-center">¿Cómo funciona el tanteador?</h3>
+      </div>
+      <div class="modal-body" style="font-family: Montserrat;">
+        <p>
+          Este programa permite llevar el tanteo y control de sanciones de un partido.<br>
+          <b>Principales funciones:</b>
+        </p>
+        <ul>
+          <li>Sumar/restar goles con teclas <b>A/Z</b> (local) y <b>D/C</b> (visitante).</li>
+          <li>Controlar el tiempo y periodos.</li>
+          <li>Agregar sanciones de 2 minutos con <b>1</b> (local) y <b>2</b> (visitante).</li>
+          <li>Pausar/reanudar el reloj con <b>Espacio</b>.</li>
+        </ul>
+        <div style="font-family: Montserrat; background:#333;padding:1em;border-radius:10px;margin:1em 0;">
+          <h4>Atajos de teclado</h4>
+          <ul style="columns:2;list-style:none;padding:0;font-family: Montserrat;">
+            <li><b>A</b>: Suma gol local</li>
+            <li><b>Z</b>: Resta gol local</li>
+            <li><b>D</b>: Suma gol visitante</li>
+            <li><b>C</b>: Resta gol visitante</li>
+            <li><b>1</b>: Sanción local (se para automaticamente el tiempo al presionar)</li>
+            <li><b>2</b>: Sanción visitante (se para automaticamente el tiempo al presionar)</li>
+            <li><b>Espacio</b>: Pausa/reanuda reloj</li>
+            <li><b>R</b>: Resetea solo el tiempo</li>
+            <li><b>Y</b>: Resetea todo el tablero</li>
+            <li><b>0 (cero)</b>: Salta el entretiempo y va directo al segundo tiempo</li>
+            <li><b>M</b>: Pantalla completa</li>
+            <li><b>P</b>: Suma periodo</li>
+            <li><b>O</b>: Resta periodo</li>
+            <li><b>F</b>: Finaliza un periodo anticipadamente, si estoy en el primer tiempo salta al entretiempo y asi sucesivamente.</li>
+          </ul>
+        </div>
+        <p>
+          🤾‍♂️ Puedes editar los nombres de equipos y torneo haciendo click sobre ellos.<br>
+          🤾‍♂️ Los logos se cambian con el botón de imagen.<br>
+          🤾‍♂️ Las sanciones se eliminan con click derecho o click (cuando están en verde).<br>
+          🤾‍♂️ Las sanciones una vez presionado el 1 u 2, se para automaticamente el tiempo y en ese momento colocamos 
+          el numero del jugador, ponemos aceptar y el tiempo se va a reanudar presionando Barra de Espacio.<br>
+          <a href="https://api.whatsapp.com/send?phone=5492604312716&text=*Hola!">Consulta por Whats App</a>
+        </p>
+      </div>
+      <div class="modal-footer" style="justify-content: center;">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
         <!-- MODAL RESETEO TOTAL -->
-        <div class="modal" style="margin-top: 15%;font-family: Arial, Helvetica, sans-serif;"
-            id="modal_tiempo_total_reset" tabindex="-1">
+        <div class="modal" style="margin-top: 15%;font-family: Arial, Helvetica, sans-serif;" id="modal_reset_total"
+            tabindex="-1">
             <div class="modal-dialog">
                 <div style="width: 90%" class="modal-content">
                     <div class="modal-header" style="justify-content: center;">
@@ -80,20 +156,40 @@
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                         <button type="button"
                             style="background-color: rgba(189, 0, 0, 0.842); border-color: rgba(189, 0, 0, 0.842);"
-                            class="btn btn-primary" data-bs-dismiss="modal" id="reset-TOTAL">Reiniciar</button>
+                            class="btn btn-primary" data-bs-dismiss="modal"
+                            id="confirmar_reset_total">Reiniciar</button>
                     </div>
                 </div>
             </div>
         </div>
 
-
-        <!-- //////////////////////////////////////////////////// -->
-
-        <div class="div1">
-            <div class="equipos">
-                <img id="logo-local" class="logo-equipo" src="" alt="Logo Local" />
-                <p contenteditable="true" id="equipo_local_editable" class="equipos_fuente1">LOCAL EDITABLE</p>
+        <!-- Modal para mostrar el ganador -->
+        <div class="modal fade" id="modal_ganador" tabindex="-1" style="display: none;">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content modal-victoria-bg">
+                    <div class="modal-header" style="border-bottom: none; justify-content: center;">
+                        <h2 class="modal-title w-100 text-center" style="font-size: 3em; letter-spacing: 2px;">FINAL DEL
+                            PARTIDO</h2>
+                    </div>
+                    <div class="modal-body d-flex flex-column align-items-center justify-content-center"
+                        id="ganador_body" style="min-height: 60vh; position: relative;">
+                        <!-- Aquí se mostrará el ganador o empate -->
+                        <canvas id="confetti-canvas"
+                            style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:2;"></canvas>
+                    </div>
+                    <div class="modal-footer" style="justify-content: center; border-top: none;">
+                        <button type="button" class="btn btn-success btn-lg" data-bs-dismiss="modal"
+                            style="font-size:1.5em;">Cerrar</button>
+                    </div>
+                </div>
             </div>
+        </div>
+        <!-- //////////////////////////////////////////////////// -->
+        <div>
+            <h1 contenteditable="true" style="text-transform: capitalize;">Torneo Editable</h1>
+        </div>
+        <div class="div1">
+            <img id="logo-local" class="logo-equipo" src="" alt="Logo Local" />
             <div class="tiempo_de_juego">
                 <div class="tiempo">
                     <p class="tiempo_fuente" id="cronometro">00:00</p>
@@ -104,12 +200,20 @@
                 <p class="periodo_letras">PERIODO</p>
 
             </div>
-            <div class="equipos">
-                <img id="logo-visitante" class="logo-equipo" src="" alt="Logo Visitante" />
-
-                <p contenteditable="true" id="equipo_visitante_editable" class="equipos_fuente1">VISITA EDITABLE</p>
-            </div>
+            <img id="logo-visitante" class="logo-equipo" src="" alt="Logo Visitante" />
         </div>
+        <div class="equipos_master">
+        <div class="equipos">
+
+                
+                <h3 contenteditable="true" id="equipo_local_editable" class="equipos_fuente1">LOCAL EDITABLE</h3>
+            </div>
+        <div class="equipos">
+                
+
+                <h3 contenteditable="true" id="equipo_visitante_editable" class="equipos_fuente1">VISITA EDITABLE</h3>
+            </div>
+            </div>
         <div class="div2">
             <div class="goles">
                 <p id="goles_local">0</p>
@@ -155,13 +259,37 @@
 
     </div>
     <div class="logo_upload">
-        <div style="display: flex; flex-direction: column; align-items: center;">
-
-            <p> SELECCIONE EL LOGO DEL EQUIPO 1</p>
-            <input type="file" id="input-logo-local" accept="image/*" style="display:block; margin: 0 auto 10px auto;">
-            <p> SELECCIONE EL LOGO DEL EQUIPO 2</p>
-            <input type="file" id="input-logo-visitante" accept="image/*"
-                style="display:block; margin: 0 auto 10px auto;">
+        <div style="display: flex; flex-direction: column; justify-content: space-between; margin-left: 30px; margin-top: 30px;">
+            <h4 style="text-align: center;">Logo de los Equipos</h4>
+            <div style="display: flex;  justify-content: space-between;gap: 50px; margin-top: 30px;align-items: center; align-self: center;">
+                <p> SELECCIONE EL LOGO DEL EQUIPO 1</p>
+                <input type="file" id="input-logo-local" accept="image/*">
+            </div>
+            <div style="display: flex;margin-top: 20px;gap: 50px; justify-content: space-between;align-items: center; align-self: center;">
+                <p> SELECCIONE EL LOGO DEL EQUIPO 2</p>
+                <input type="file" id="input-logo-visitante" accept="image/*"
+                    style="display:block; margin: 0 auto 10px auto; ">
+            </div>
+            <div style="gap: 10px;">
+                <div style="gap: 10px;">
+                    <div style="margin-top: 30px; ">
+                        <h4 style="text-align: center;"> Escriba el tiempo de juego</h4>
+                        <div style="display: flex; gap: 6%; margin-top: 30px;">
+                            <label for="minutos_periodo" style="margin:0;">MINUTOS POR PERIODOS:</label>
+                            <input id="minutos_periodo" type="number" class="form-control" style="width: 80px;" min="1"
+                                max="60" value="30">
+                        </div>
+                        <div style="display: flex; gap: 19%;margin-bottom: 10px; margin-top: 10px;">
+                            <label for="minutos_entretiempo" style="margin:0;">ENTRETIEMPO:</label>
+                            <input id="minutos_entretiempo" type="number" class="form-control" style="width: 80px;"
+                                min="1" max="30" value="5">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button id="ayuda-btn" class="btn btn-info" style="position: absolute; top: 20px; right: 20px; z-index: 10; background-color: #fff;">
+    Ayuda / Instrucciones
+</button>
             <button id="fullscreen-btn">Pantalla Completa</button>
         </div>
     </div>
