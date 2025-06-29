@@ -49,24 +49,7 @@
             </div>
         </div>
     </div>
-    <!-- MODAL PREGUNTA ENTRETIEMPO -->
-    <div class="modal fade" id="modal_fin_anticipado" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content" style="background: #222; color: white;">
-                <div class="modal-header" style="justify-content: center;">
-                    <h4 class="modal-title">¿Finalizar periodo?</h4>
-                </div>
-                <div class="modal-body">
-                    <p>¿Seguro que desea finalizar el periodo antes de tiempo y pasar al entretiempo o segundo periodo?
-                    </p>
-                </div>
-                <div class="modal-footer" style="justify-content: center;">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" id="confirmar_fin_anticipado">Sí, finalizar</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 
     <!-- COMIENZO DEL TABLERO -->
 
@@ -78,7 +61,7 @@
                         <h4 class="modal-title">Atención</h4>
                     </div>
                     <div class="modal-body">
-                        <p>Este botón reinicia solamente el cronómetros. ¿Desea reiniciar?</p>
+                        <p>Este botón reinicia solamente el cronómetro. ¿Desea reiniciar?</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -89,6 +72,7 @@
                 </div>
             </div>
         </div>
+    
         <!-- Modal de Ayuda -->
 <div class="modal fade" id="modal_ayuda" tabindex="-1">
   <div class="modal-dialog modal-lg">
@@ -106,6 +90,9 @@
           <li>Controlar el tiempo y periodos.</li>
           <li>Agregar sanciones de 2 minutos con <b>1</b> (local) y <b>2</b> (visitante).</li>
           <li>Pausar/reanudar el reloj con <b>Espacio</b>.</li>
+          <li>El entretiempo se larga SOLO.(no tocar la barra de espacio porque larga los 2 min)</li>
+          <li>Se puede saltar el entretiempo con la tecla 0 (Cero).</li>
+          
         </ul>
         <div style="font-family: Montserrat; background:#333;padding:1em;border-radius:10px;margin:1em 0;">
           <h4>Atajos de teclado</h4>
@@ -189,6 +176,41 @@
             <h1 contenteditable="true" style="text-transform: capitalize;">Torneo Editable</h1>
         </div>
         <div class="div1">
+                <!-- MODAL PREGUNTA ENTRETIEMPO -->
+   <div class="modal fade" id="modal_saltar_segundo" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content" style="background: #222; color: white;">
+      <div class="modal-header" style="justify-content: center;">
+        <h4 class="modal-title">¿Saltar al segundo tiempo?</h4>
+      </div>
+      <div class="modal-body">
+        <p>¿Seguro que deseas saltar directamente al segundo tiempo?</p>
+      </div>
+      <div class="modal-footer" style="justify-content: center;">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" id="confirmar_saltar_segundo">Sí, saltar</button>
+      </div>
+    </div>
+  </div>
+</div>
+                <!-- MODAL PREGUNTA ENTRETIEMPO -->
+    <div class="modal fade" id="modal_fin_anticipado" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background: #222; color: white;">
+                <div class="modal-header" style="justify-content: center;">
+                    <h4 class="modal-title">¿Finalizar periodo?</h4>
+                </div>
+                <div class="modal-body">
+                    <p>¿Seguro que desea finalizar el periodo antes de tiempo y pasar al entretiempo o segundo periodo?
+                    </p>
+                </div>
+                <div class="modal-footer" style="justify-content: center;">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="confirmar_fin_anticipado">Sí, finalizar</button>
+                </div>
+            </div>
+        </div>
+    </div>
             <img id="logo-local" class="logo-equipo" src="" alt="Logo Local" />
             <div class="tiempo_de_juego">
                 <div class="tiempo">

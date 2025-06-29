@@ -97,16 +97,24 @@ document.getElementById('minutos_entretiempo').addEventListener('input', functio
 
 document.addEventListener('keydown', function(event) {
     if (event.key === '0' && !document.activeElement.isContentEditable && !modalAbierto) {
-        enEntretiempo = false;
-        periodoActual = 2;
-        segundosRestantes = minutosPeriodo * 60;
-        document.getElementById('periodo').textContent = periodoActual;
-        actualizarCronometro();
-        cronometroPausado = true; // Espera Space para arrancar
-        clearInterval(cronometroInterval);
-        pausarSanciones();
+        abrirModalUnico('modal_saltar_segundo');
+        modalAbierto = true;
+        document.getElementById('modal_saltar_segundo').addEventListener('hidden.bs.modal', function handler() {
+            modalAbierto = false;
+            this.removeEventListener('hidden.bs.modal', handler);
+        });
     }
-});
+});document.getElementById('confirmar_saltar_segundo').onclick = function () {
+    enEntretiempo = false;
+    periodoActual = 2;
+    segundosRestantes = minutosPeriodo * 60;
+    document.getElementById('periodo').textContent = periodoActual;
+    actualizarCronometro();
+    cronometroPausado = true;
+    clearInterval(cronometroInterval);
+    pausarSanciones();
+    bootstrap.Modal.getInstance(document.getElementById('modal_saltar_segundo')).hide();
+};
 // Actualiza el cronómetro en pantalla
 function actualizarCronometro() {
     let min = Math.floor(segundosRestantes / 60).toString().padStart(2, '0');
@@ -189,11 +197,19 @@ document.addEventListener('keydown', function(event) {
 document.addEventListener('keydown', function(e) {
     if (e.key.toLowerCase() === 'f') {
         if (cronometroInterval && segundosRestantes > 0) {
-            let modal = new bootstrap.Modal(document.getElementById('modal_fin_anticipado'));
-            modal.show();
+            abrirModalUnico('modal_fin_anticipado');
         }
     }
 });
+function abrirModalUnico(modalId) {
+    
+    const modalElem = document.getElementById(modalId);
+    // Solo abre si no está visible
+    if (!modalElem.classList.contains('show')) {
+        const modal = new bootstrap.Modal(modalElem);
+        modal.show();
+    }
+}
 
 // Confirmar fin anticipado
 document.getElementById('confirmar_fin_anticipado').addEventListener('click', function() {
@@ -614,6 +630,15 @@ function lanzarConfites() {
         update();
         requestAnimationFrame(draw);
     }
+function abrirModalUnico(modalId) {
+    const modalElem = document.getElementById(modalId);
+    // Solo abre si no está visible
+    if (!modalElem.classList.contains('show')) {
+        const modal = new bootstrap.Modal(modalElem);
+        modal.show();
+    }
+}
+    
     function update() {
         confetti.forEach(c => {
             c.y += 1.2 + c.r / 6; // Más lento
