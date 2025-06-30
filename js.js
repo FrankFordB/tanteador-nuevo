@@ -9,7 +9,17 @@ let cronometroEstabaCorriendo = false;
 // GOLES
 let counter = 0;
 let counterVisita = 0;
-
+document.addEventListener('DOMContentLoaded', function() {
+    const h1 = document.querySelector('h1[contenteditable="true"]');
+    if (h1) {
+        h1.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                h1.blur(); // Sale del modo edición
+            }
+        });
+    }
+});
 document.addEventListener('keydown', function (event) {
     if ((event.key === 'a' || event.key === 'A' )&& !document.activeElement.isContentEditable && !modalAbierto) {
         counter++;
@@ -40,21 +50,6 @@ function updateDisplay() {
 // PERIODO SUMA Y RESTA
 let periodo = 1;
 
-document.addEventListener('keydown', function (event) {
-    if ((!enEntretiempo)&& !document.activeElement.isContentEditable && !modalAbierto) { // <-- Solo permite cambiar periodo si NO está en entretiempo
-        if (event.key === 'p' || event.key === 'P') {
-            if (periodo < 2) {
-                periodo++;
-                updatePeriodoDisplay();
-            }
-        } else if (event.key === 'o' || event.key === 'O') {
-            if (periodo > 1) {
-                periodo--;
-                updatePeriodoDisplay();
-            }
-        }
-    }
-});
 
 function updatePeriodoDisplay() {
     const periodoDisplay = document.getElementById('periodo');
@@ -146,39 +141,91 @@ document.addEventListener('keydown', function(event) {
         activarPantallaCompleta();
     }
 });
+
 // Iniciar cronómetro principal
 function iniciarCronometro() {
     clearInterval(cronometroInterval);
     cronometroInterval = setInterval(() => {
         if (segundosRestantes > 0) {
+            // --- SUENA EL AUDIO CUANDO FALTA 1 SEGUNDO ---
+            if (segundosRestantes === 1) {
+                reproducirSonidoFinPeriodo();
+            }
             segundosRestantes--;
+            // Actualiza sanciones aquí...
+            sancionesLocal.concat(sancionesVisitante).forEach(sancion => {
+                if (sancion.activo && sancion.tiempo > 0) {
+                    sancion.tiempo--;
+                    let min = Math.floor(sancion.tiempo / 60);
+                    let seg = sancion.tiempo % 60;
+                    sancion.elemento.querySelector('.sancion-crono').textContent =
+                        `${min.toString().padStart(2, '0')}:${seg.toString().padStart(2, '0')}`;
+                    if (sancion.tiempo === 0) {
+                        sancion.elemento.querySelector('.sancion-crono').textContent = "Ingresa";
+                        sancion.elemento.style.backgroundColor = "green";
+                        sancion.finalizada = true;
+                    }
+                }
+            });
             actualizarCronometro();
         } else {
             clearInterval(cronometroInterval);
+            // ...resto de tu lógica de cambio de periodo o ganador...
             if (!enEntretiempo && periodoActual === 1) {
-    // PASA A ENTRETIEMPO Y LO LARGA SOLO
-    enEntretiempo = true;
-    segundosRestantes = minutosEntretiempo * 60;
-    document.getElementById('periodo').textContent = 'Entretiempo';
-    actualizarCronometro();
-    pausarSanciones();
-    cronometroPausado = false; // El entretiempo arranca solo
-    iniciarCronometro(); // Lanza el entretiempo automáticamente
-} else if (enEntretiempo) {
-    // PASA A SEGUNDO TIEMPO, PERO SOLO ARRANCA CON SPACE
-    enEntretiempo = false;
-    periodoActual = 2;
-    segundosRestantes = minutosPeriodo * 60;
-    document.getElementById('periodo').textContent = periodoActual;
-    actualizarCronometro();
-    cronometroPausado = true; // Espera Space para arrancar
-    // NO LLAMES iniciarCronometro() aquí, espera Space
-} else {
-    mostrarGanador();
-
+                enEntretiempo = true;
+                segundosRestantes = minutosEntretiempo * 60;
+                document.getElementById('periodo').textContent = 'Entretiempo';
+                actualizarCronometro();
+                pausarSanciones();
+                cronometroPausado = false;
+                iniciarCronometro();
+            } else if (enEntretiempo) {
+                enEntretiempo = false;
+                periodoActual = 2;
+                segundosRestantes = minutosPeriodo * 60;
+                document.getElementById('periodo').textContent = periodoActual;
+                actualizarCronometro();
+                cronometroPausado = true;
+            } else {
+                mostrarGanador();
             }
         }
-    },1000);
+    }, 1000);
+}
+let sonidoEnCurso = false;
+
+function reproducirSonidoFinPeriodo() {
+    const audio = document.getElementById('audio_fin_periodo');
+    if (audio && !sonidoEnCurso) {
+        sonidoEnCurso = true;
+        audio.currentTime = 0;
+        audio.play();
+        audio.onended = function() {
+            setTimeout(() => {
+                audio.currentTime = 0;
+                audio.play();
+                audio.onended = function() {
+                    sonidoEnCurso = false;
+                };
+            }, 1000); // 1000 ms = 1 segundo
+        };
+    }
+}
+
+document.addEventListener('keydown', function(event) {
+    if ((event.key === 'b' || event.key === 'B') && !document.activeElement.isContentEditable) {
+        clearInterval(cronometroInterval);
+        pausarSanciones();
+        cronometroPausado = true;
+        reproducirSonidoFinPeriodoSolo();
+    }
+});
+function reproducirSonidoFinPeriodoSolo() {
+    const audio = document.getElementById('audio_fin_periodo');
+    if (audio) {
+        audio.currentTime = 0;
+        audio.play();
+    }
 }
 document.getElementById('ayuda-btn').addEventListener('click', function() {
     var modal = new bootstrap.Modal(document.getElementById('modal_ayuda'));
@@ -486,22 +533,7 @@ document.getElementById('confirmar_sancion_btn').addEventListener('click', funct
 };
             lista.push(sancionN);
 
-            // Timer para el box "N"
-            const cronoN = boxN.querySelector('.sancion-crono');
-            let intervalN = setInterval(() => {
-                if (sancionN.activo && sancionN.tiempo > 0) {
-                    sancionN.tiempo--;
-                    let minN = Math.floor(sancionN.tiempo / 60);
-                    let segN = sancionN.tiempo % 60;
-                    cronoN.textContent = `${minN.toString().padStart(2, '0')}:${segN.toString().padStart(2, '0')}`;
-                    if (sancionN.tiempo === 0) {
-                        clearInterval(intervalN);
-                        cronoN.textContent = "Ingresa";
-                        boxN.style.backgroundColor = "green";
-                        sancionN.finalizada = true;
-                    }
-                }
-            }, 1000);
+        
 
             // Permitir borrar el box "N" con click derecho
             boxN.addEventListener('contextmenu', function(e) {
@@ -554,22 +586,7 @@ document.getElementById('confirmar_sancion_btn').addEventListener('click', funct
         clearInterval(interval);
     });
 
-    // Timer
-    const crono = box.querySelector('.sancion-crono');
-    let interval = setInterval(() => {
-        if (sancion.activo && sancion.tiempo > 0) {
-            sancion.tiempo--;
-            let min = Math.floor(sancion.tiempo / 60);
-            let seg = sancion.tiempo % 60;
-            crono.textContent = `${min.toString().padStart(2, '0')}:${seg.toString().padStart(2, '0')}`;
-            if (sancion.tiempo === 0) {
-                clearInterval(interval);
-                crono.textContent = "Ingresa";
-                box.style.backgroundColor = "green";
-                sancion.finalizada = true;
-            }
-        }
-    }, 1000);
+
 
     // Permitir borrar solo si está finalizada
     box.addEventListener('click', function() {

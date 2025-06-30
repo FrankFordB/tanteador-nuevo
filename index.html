@@ -20,6 +20,8 @@
 </head>
 
 <body>
+
+    
     <!-- Modal de mensaje importante -->
     <div class="modal fade" id="modal_bienvenida" tabindex="-1">
         <div class="modal-dialog">
@@ -109,8 +111,7 @@
             <li><b>Y</b>: Resetea todo el tablero</li>
             <li><b>0 (cero)</b>: Salta el entretiempo y va directo al segundo tiempo</li>
             <li><b>M</b>: Pantalla completa</li>
-            <li><b>P</b>: Suma periodo</li>
-            <li><b>O</b>: Resta periodo</li>
+            <li><b>B</b>: Bocina (PARA AUTOMATICAMENTE EL TIEMPO), se puede usar con el tiempo parado y no afecta nada.</li>
             <li><b>F</b>: Finaliza un periodo anticipadamente, si estoy en el primer tiempo salta al entretiempo y asi sucesivamente.</li>
           </ul>
         </div>
@@ -173,8 +174,8 @@
             </div>
         </div>
         <!-- //////////////////////////////////////////////////// -->
-        <div>
-            <h1 contenteditable="true" style="text-transform: capitalize;">Torneo Editable</h1>
+        <div style="display: flex; height: 8vh;justify-content: center; align-items:center;">
+            <h1 contenteditable="true" style="text-transform: capitalize; position: absolute; top: 0px; ">Torneo Editable</h1>
         </div>
         <div class="div1">
                 <!-- MODAL PREGUNTA ENTRETIEMPO -->
@@ -211,18 +212,16 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> 
             <img id="logo-local" class="logo-equipo" src="" alt="Logo Local" />
-            <div class="tiempo_de_juego">
+            
                 <div class="tiempo">
                     <p class="tiempo_fuente" id="cronometro">00:00</p>
 
 
 
                 </div>
-                <p class="periodo_letras">PERIODO</p>
-
-            </div>
+           
             <img id="logo-visitante" class="logo-equipo" src="" alt="Logo Visitante" />
         </div>
         <div class="equipos_master">
@@ -258,9 +257,10 @@
                 </div>
             </div>
 
-            <div>
-
-                <div class="goles_periodo" id="periodo">1
+            <div class="periodosNuevos"><div>
+                    <p class="periodo_letras">PERIODO</p>
+                    </div>
+                <div class="goles_periodo" id="periodo"><p>1</p>
 
                 </div>
             </div>
@@ -310,13 +310,13 @@
                     </div>
                 </div>
             </div>
-            <button id="ayuda-btn" class="btn btn-info" style="position: absolute; top: 20px; right: 20px; z-index: 10; background-color: #fff;">
-    Ayuda / Instrucciones
+            <button id="ayuda-btn" class="btn btn-info" style="font-family: Montserrat;position: absolute; top: 20px; right: 20px; z-index: 10; background-color: #fff;">
+    Ayúda / Instrucciónes
 </button>
             <button id="fullscreen-btn">Pantalla Completa</button>
         </div>
     </div>
-
+<audio id="audio_fin_periodo" src="./Bocina1(mp3cut.net).mp3" preload="auto"></audio>
 </body>
 
 </html>

@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
 @import url('https://fonts.cdnfonts.com/css/ds-digital');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap');
-*{
+
+* {
     padding: 0;
     margin: 0;
 }
+
 body {
     font-family: 'Orbitron', sans-serif;
     background-color: black;
@@ -12,7 +14,8 @@ body {
     margin: 0;
     padding: 0;
 }
-button{
+
+button {
     font-family: Arial, Helvetica, sans-serif;
     background-color: black;
     color: white;
@@ -22,35 +25,42 @@ button{
     font-size: 1.2em;
     transition: background-color 0.3s, color 0.3s;
 }
+
 button:hover {
     background-color: white;
     color: black;
 }
+
 button:disabled {
     background-color: gray;
     color: darkgray;
     cursor: not-allowed;
 }
+
 .master {
     display: flex;
-    
+
     flex-direction: column;
     align-content: center;
     justify-content: center;
     align-self: center;
     align-items: center;
     background-color: black;
-    
+
 }
+
 .logo-equipo {
     width: 30vh;
     height: 30vh;
-    box-shadow: 1px 2px 4px white,1px -2px 4px white,-1px -2px 4px white,-1px 2px 4px white;
+    box-shadow: 1px 2px 4px white, 1px -2px 4px white, -1px -2px 4px white, -1px 2px 4px white;
     object-fit: contain;
     margin: 0 auto;
     display: block;
-    
+    background: #fff;
+    background-color: #fff;
+
 }
+
 .div1 {
     display: flex;
     border-top: 3px solid white;
@@ -60,6 +70,7 @@ button:disabled {
     justify-content: space-around;
     margin: 10px 0;
 }
+
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -71,11 +82,12 @@ input[type=number]::-webkit-outer-spin-button {
     width: 100%;
     height: 12em;
     justify-content: space-around;
-    
+
     border-left: 3px solid white;
     border-right: 3px solid white;
-    }
-.div3{
+}
+
+.div3 {
     display: flex;
     width: 100%;
     height: 10em;
@@ -85,6 +97,7 @@ input[type=number]::-webkit-outer-spin-button {
     border-bottom: 3px solid white;
 
 }
+
 #modal_sancion .modal-dialog {
     display: flex;
     justify-content: center;
@@ -94,22 +107,27 @@ input[type=number]::-webkit-outer-spin-button {
     min-height: 100vh;
     margin: 0;
 }
-.equipos_master{
+
+.equipos_master {
     display: flex;
     width: 100%;
     gap: 40%;
+    padding: 20px 0px;
 }
+
 .equipos {
     width: 100%;
-    display: flex  ;
+    display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     align-self: center;
     align-content: center;
-    margin: 0 5px;
+    margin: 0 28px;
+
 }
-.modal-body{
+
+.modal-body {
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -117,45 +135,52 @@ input[type=number]::-webkit-outer-spin-button {
     justify-items: center;
     justify-self: center;
 }
-.equipos_fuente{
+
+.equipos_fuente {
     font-family: ds-digital, sans-serif;
     font-size: 3em;
     width: 100%;
     color: white;
     text-align: center;
 }
-.sancion-box, .sancion-nueva {
+
+.sancion-box,
+.sancion-nueva {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
 }
+
 .equipos_fuente1 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 2.8em;
     text-transform: uppercase;
     color: white;
     text-align: center;
-    width: 40vh;  
-    height: 21vh;         /* ancho fijo */
-           /* alto fijo */
-         /* oculta el exceso */
-    
-    text-overflow: ellipsis; /* agrega ... si el texto es muy largo */
+    width: 45vh;
+    height: 21vh;
+    /* ancho fijo */
+    /* alto fijo */
+    /* oculta el exceso */
+
+    text-overflow: ellipsis;
+    /* agrega ... si el texto es muy largo */
     display: flex;
     align-items: center;
     align-content: center;
     justify-content: center;
 }
 
-.periodo{
+.periodo {
     display: flex;
-    
+
     align-items: center;
     justify-content: center;
-    
+
 }
+
 .goles {
     display: flex;
     width: 10vh;
@@ -164,9 +189,10 @@ input[type=number]::-webkit-outer-spin-button {
     font-family: ds-digital, sans-serif;
     font-size: 10em;
     color: rgb(239, 255, 17);
-    
+
 }
-.periodo_letras{
+
+.periodo_letras {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -175,42 +201,53 @@ input[type=number]::-webkit-outer-spin-button {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
 }
+
 .goles_periodo {
     display: flex;
     font-family: ds-digital, sans-serif;
     font-size: 8em;
     color: rgb(13, 255, 13);
-    
+
 }
-.tiempo{
+
+.tiempo {
     display: flex;
-    
-    border: 2px solid white;
+    align-self: center;
     align-items: center;
+    align-content: center;
     justify-content: center;
+    justify-self: center;
+    justify-items: center;
+    border: 2px solid white;
+    border-radius: 8px;
     font-family: ds-digital, sans-serif;
     font-size: 5em;
     width: 8em;
     height: 2em;
 }
+
 input[type="file"]::-webkit-file-upload-button {
     /* Solo muestra el botón, oculta el texto en Chrome/Safari */
     margin-right: 0;
 }
+
 input[type="file"]::file-selector-button {
     /* Solo muestra el botón, oculta el texto en Edge/Firefox */
     margin-right: 0;
 }
+
 input[type="file"] {
     color: transparent;
 }
+
 .tiempo_fuente {
     font-family: ds-digital, sans-serif;
     font-size: 1.6em;
     color: red;
     text-align: center;
 }
-.logo_upload{
+
+.logo_upload {
     display: flex;
     align-content: center;
     align-items: center;
@@ -228,18 +265,20 @@ input[type="file"] {
     margin-left: 120px;
     width: 50%;
     margin-bottom: 30px;
-    
+
     margin: 10px 0;
 }
+
 .sanciones-row2 {
     border-left: 4px solid wheat;
     display: flex;
     margin-left: 21em;
     width: 50%;
     margin-bottom: 30px;
-    
+
     margin: 10px 0;
 }
+
 .sancion-box {
     background: #020b5ac9;
     margin-left: 20px;
@@ -255,23 +294,28 @@ input[type="file"] {
     transition: background 0.3s;
     font-family: 'ds-digital', Arial, sans-serif;
 }
+
 .sancion-box[style*="background-color: green"] {
     color: #fff;
     font-family: sans-serif;
 }
+
 .sancion-numero {
     font-family: sans-serif;
     font-size: 1.8em;
     margin-bottom: 5px;
 }
+
 .sancion-crono {
     font-family: sans-serif;
     font-size: 1.8em;
     margin-top: 5px;
 }
-.modal-content{
+
+.modal-content {
     display: flex;
 }
+
 .modal-victoria-bg {
     background: #000 !important;
     color: #fff;
@@ -280,6 +324,7 @@ input[type="file"] {
     box-shadow: none;
     overflow: hidden;
 }
+
 #ganador_body img {
     border-radius: 20px;
     box-shadow: 0 0 40px #0008;
@@ -289,44 +334,218 @@ input[type="file"] {
     z-index: 3;
     position: relative;
 }
-#ganador_body h1, #ganador_body h2 {
+
+#ganador_body h1,
+#ganador_body h2 {
     z-index: 3;
     position: relative;
 }
-@media (max-width: 1100px), (max-height: 600px) {
-    body {
+
+.periodosNuevos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20%;
+}
+
+@media (max-width: 1366px),
+(max-height: 768px) {
+    .master {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-self: center;
+        align-items: center;
+        background-color: black;
+        margin: 0px;
+    }
+
+    .logo-equipo {
+        width: 35vh;
+        height: 30vh;
+        object-fit: contain;
+        margin: 0px;
+        /* rellena el espacio y recorta si es necesario */
+        border-radius: 0;
+        /* opcional: cuadrado, o pon 50% para círculo */
+        background: #ffffff;
+    }
+
+    .goles {
+        font-size: 22vh;
+        width: 120vh;
+    }
+
+
+    .periodo_letras {
+        margin-bottom: 0px;
+        font-size: 5vh;
+    }
+
+    .goles_periodo {
+        display: flex;
+        width: 45vh;
+        height: 16vh;
+        margin: 0px;
+        justify-content: center;
+        align-items: center;
+        align-self: center;
+        align-content: center;
+        font-size: 8em;
+    }
+
+    .goles_periodo p {
+        font-size: 1.5em;
+    }
+
+    .equipos_master {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0px;
+        width: 47%;
+        gap: 50%;
+        height: 20vh;
+
+    }
+
+    .equipos_fuente1 {
+        font-size: 3.5em;
+        text-transform: uppercase;
+        width: 63vh;
+        font-weight: bold;
+        height: 3em;
+        margin-top: 2%;
+        vertical-align: top;
+        align-self: flex-start;
+        /* Opcional: alinea a la izquierda */
+        margin-top: 0;
+    }
+
+    .div1 {
+        height: 14em;
+        margin-top: 0px;
+    }
+h1 {
+    margin: 0;
+}
+    .div2 {
+
+        flex-direction: row;
+        height: 9em;
+        width: 100%;
+
+    }
+
+    .div3 {
+        height: 10em;
+        margin-bottom: 2px;
+        border-top: 3px solid white;
+        border-bottom: 3px solid white;
+    }
+
+    .sanciones-row,
+    .sanciones-row2 {
+        width: 100%;
+        font-size: 1.15em;
+        margin: 0;
         
+    }
+
+    .sancion-box {
+        width: 20%;
+        font-weight: bold;
+        font-size: 1em;
+        margin-left: 10px;
+        line-height: 1.1;
+        margin-bottom: 0;
+        padding: 4px;
+    }
+    .sancion-crono{
+        
+        height: 50%;
+    }
+    .sancion-numero{
+        height: 50%;
+        letter-spacing: 0px;
+        text-align: center;
+    }
+
+
+    #modal_sancion {
+        min-height: 100vh;
+        align-items: flex-end;
+    }
+
+    .tiempo {
+        font-size: 11vh;
+        height: 2em;
+        display: flex;
+        margin: 0;
+        width: 44vh;
+        margin-bottom: 4.2%;
+        border-top: none;
+        border-left: 3px solid white;
+        border-right: 3px solid white;
+        border-bottom: 3px solid white;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        align-self: center;
+        justify-items: center;
+        justify-self: center;
+
+    }
+
+
+
+
+}
+
+@media (max-width: 1100px),
+(max-height: 600px) {
+    body {
+
         font-size: 0.95em;
     }
+
     .master {
-    display: flex;
-    max-width: 1100px;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-    align-self: center;
-    align-items: center;
-    background-color: black;
-    
-}
+        display: flex;
+        max-width: 1100px;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-self: center;
+        align-items: center;
+        background-color: black;
+
+    }
+
     .logo-equipo {
         width: 30vh;
         height: 26vh;
-        object-fit: cover; /* rellena el espacio y recorta si es necesario */
-    border-radius: 0;  /* opcional: cuadrado, o pon 50% para círculo */
-    background: #222;
+        object-fit: cover;
+        /* rellena el espacio y recorta si es necesario */
+        border-radius: 0;
+        /* opcional: cuadrado, o pon 50% para círculo */
+        background: #ffffff;
     }
-    
+
     .goles {
         font-size: 15vh;
         width: 120vh;
     }
-    .periodo_letras{
+
+
+    .periodo_letras {
         margin-bottom: 0px;
-        
+
     }
+
     .goles_periodo {
-        display:flex ;
+        display: flex;
         width: 35vh;
         height: 16vh;
         justify-content: center;
@@ -335,12 +554,16 @@ input[type="file"] {
         align-content: center;
         font-size: 6em;
     }
-       .equipos_master{
-        text-align: end;
-        
+
+    .equipos_master {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
         width: 90%;
-    
-}
+
+    }
+
     .equipos_fuente1 {
         font-size: 2.5em;
         text-transform: uppercase;
@@ -349,32 +572,37 @@ input[type="file"] {
         height: 3em;
         margin-top: 2%;
         vertical-align: top;
-        align-self: flex-start;   /* Opcional: alinea a la izquierda */
-    margin-top: 0;
+        align-self: flex-start;
+        /* Opcional: alinea a la izquierda */
+        margin-top: 0;
     }
-    .div1{
+
+    .div1 {
         height: 14em;
     }
-    .div2{
+
+    .div2 {
 
         flex-direction: row;
         height: 9em;
         width: 100%;
-        
+
     }
-    .div3{
+
+    .div3 {
         height: 10em;
         margin-bottom: 2px;
-        border-top: 3px solid  white;
+        border-top: 3px solid white;
         border-bottom: 3px solid white;
     }
- 
+
     .sanciones-row,
     .sanciones-row2 {
         width: 100%;
         font-size: 0.9em;
         margin-left: 0;
     }
+
     .sancion-box {
         width: 7em;
         font-weight: bold;
@@ -382,23 +610,154 @@ input[type="file"] {
         margin-left: 5px;
         padding: 4px;
     }
-    
-    #modal_sancion  {
+
+    #modal_sancion {
         min-height: 100vh;
         align-items: flex-end;
     }
-    
+
     .tiempo {
         font-size: 8vh;
         width: 30vh;
         height: 1.5em;
     }
-    .tiempo_de_juego{
+
+    .tiempo_de_juego {
         display: flex;
         width: 33vh;
 
         flex-direction: column;
-        
+
     }
 
+}
+
+
+
+@media (max-width: 1000px),
+(max-height: 500px) {
+
+
+
+
+    .master {
+        display: flex;
+        max-width: 1000px;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-self: center;
+        align-items: center;
+        background-color: black;
+        margin: 0px;
+    }
+
+    .logo-equipo {
+        width: 40vh;
+        height: 30vh;
+        object-fit: cover;
+        margin: 0px;
+        /* rellena el espacio y recorta si es necesario */
+        border-radius: 0;
+        /* opcional: cuadrado, o pon 50% para círculo */
+        background: #ffffff;
+    }
+
+    .goles {
+        font-size: 25vh;
+        width: 120vh;
+    }
+
+
+    .periodo_letras {
+        margin-bottom: 0px;
+        font-size: 8vh;
+    }
+
+    .goles_periodo {
+        display: flex;
+        width: 45vh;
+        height: 16vh;
+        margin: 0px;
+        justify-content: center;
+        align-items: center;
+        align-self: center;
+        align-content: center;
+        font-size: 6em;
+    }
+
+    .equipos_master {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0px;
+        width: 90%;
+
+    }
+
+    .equipos_fuente1 {
+        font-size: 2.5em;
+        text-transform: uppercase;
+        width: 30vh;
+        font-weight: bold;
+        height: 3em;
+        margin-top: 2%;
+        vertical-align: top;
+        align-self: flex-start;
+        /* Opcional: alinea a la izquierda */
+        margin-top: 0;
+    }
+
+    .div1 {
+        height: 14em;
+    }
+
+    .div2 {
+
+        flex-direction: row;
+        height: 9em;
+        width: 100%;
+
+    }
+
+    .div3 {
+        height: 10em;
+        margin-bottom: 2px;
+        border-top: 3px solid white;
+        border-bottom: 3px solid white;
+    }
+
+    .sanciones-row,
+    .sanciones-row2 {
+        width: 100%;
+        font-size: 0.9em;
+        margin-left: 0;
+    }
+
+    .sancion-box {
+        width: 7em;
+        font-weight: bold;
+        font-size: 1em;
+        margin-left: 5px;
+        padding: 4px;
+    }
+
+    #modal_sancion {
+        min-height: 100vh;
+        align-items: flex-end;
+    }
+
+    .tiempo {
+        font-size: 8vh;
+        width: 30vh;
+        height: 1.5em;
+    }
+
+    .tiempo_de_juego {
+        display: flex;
+        width: 33vh;
+
+        flex-direction: column;
+
+    }
 }
