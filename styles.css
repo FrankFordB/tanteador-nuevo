@@ -449,16 +449,16 @@ h1 {
     .sanciones-row,
     .sanciones-row2 {
         width: 100%;
-        font-size: 1.15em;
+        font-size: 1.4em;
         margin: 0;
         
     }
 
     .sancion-box {
-        width: 20%;
+        width: 24%;
         font-weight: bold;
-        font-size: 1em;
-        margin-left: 10px;
+        font-size: 1.5em;
+        margin-left: 1%;
         line-height: 1.1;
         margin-bottom: 0;
         padding: 4px;
@@ -599,7 +599,7 @@ h1 {
     .sanciones-row,
     .sanciones-row2 {
         width: 100%;
-        font-size: 0.9em;
+        font-size: 1.17em;
         margin-left: 0;
     }
 

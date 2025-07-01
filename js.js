@@ -161,7 +161,7 @@ function iniciarCronometro() {
                     sancion.elemento.querySelector('.sancion-crono').textContent =
                         `${min.toString().padStart(2, '0')}:${seg.toString().padStart(2, '0')}`;
                     if (sancion.tiempo === 0) {
-                        sancion.elemento.querySelector('.sancion-crono').textContent = "Ingresa";
+                        sancion.elemento.querySelector('.sancion-crono').textContent = "ING.";
                         sancion.elemento.style.backgroundColor = "green";
                         sancion.finalizada = true;
                     }
@@ -519,7 +519,7 @@ document.getElementById('confirmar_sancion_btn').addEventListener('click', funct
         if (cronometroEstabaCorriendo) {
             const boxN = document.createElement('div');
             boxN.className = 'sancion-box sancion-nueva';
-            boxN.innerHTML = `<div class="sancion-numero" style="text-align: center;">Jugador N</div>
+            boxN.innerHTML = `<div class="sancion-numero" style="text-align: center;">N°</div>
                   <div class="sancion-crono">${Math.floor(tiempoRestantePrevio/60).toString().padStart(2, '0')}:${(tiempoRestantePrevio%60).toString().padStart(2, '0')}</div>`;
             contenedor.appendChild(boxN);
             
